@@ -85,7 +85,7 @@
 									<td><?php echo $rows_produto['nome']; ?></td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
-										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $rows_produto['id']; ?>" data-whatevernome="<?php echo $rows_produto['nome']; ?>"data-whateverdetalhes="<?php echo $rows_produto['detalhes']; ?>">Editar</button>
+										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $rows_produto['id']; ?>" data-whatevernome="<?php echo $rows_produto['nome']; ?>"data-whateverdetalhes="<?php echo $rows_produto['detalhe']; ?>">Editar</button>
 										<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
 									</td>
 								</tr>

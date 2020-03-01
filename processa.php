@@ -5,8 +5,8 @@
 	$detalhes = mysqli_real_escape_string($conn, $_POST['detalhes']);
 	echo "$id - $nome - $detalhes";
     
-    $result_produtos = "UPDATE produto SET nome = '$nome', detalhes = '$detalhes' WHERE id = '$id'";
-    $resultado_produtos = mysqli_query($conn, $result_cursos);
+    $result_produtos = "UPDATE produto SET nome = '$nome', detalhe = '$detalhes' WHERE id = '$id'";
+    $resultado_produtos = mysqli_query($conn, $result_produtos);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
