@@ -37,23 +37,23 @@
 							<form method="POST" action="http://localhost/Estock1/processa_cad.php" enctype="multipart/form-data">
 								<!-- <input type="hidden" name="nome_foto"  value ="<?php echo '22'?>"><br><br> -->
 								<div class="form-group">
-									<label for="recipient-name" class="control-label">Nome do produto :</label>
+									<label for="recipient-name" class="control-label">Nome do produto :</label>   	<!-- NOME DO PRODUTO -->
 									<input name="nome" type="text" class="form-control">
 								</div>
 								<div class="form-group">
-									<label for="recipient-name" class="control-label">Código de barras :</label>
+									<label for="recipient-name" class="control-label">Código de barras :</label>  	<!-- CÓDIGO DE BARRAS -->
 									<input name="codigo_barras" type="text" class="form-control">
 								</div>
 								<div class="form-group">
-									<label for="message-text" class="control-label">Descrição :</label>
+									<label for="message-text" class="control-label">Descrição :</label> 			<!-- DESCRIÇÃO -->
 									<textarea name="detalhes" class="form-control"></textarea>
 								</div>
 								<div class="form-group">
-									<label for="recipient-name" class="control-label">Valor :</label>
+									<label for="recipient-name" id = "valor1"class="control-label">Valor :</label>   			<!-- VALOR -->
 									<input name="valor" type="text" class="form-control">
 								</div>
 								<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
-								<img style="width: 150px; height: 150px;"><br><br>
+								<img style="width: 150px; height: 150px;"><br><br> 									<!-- FOTO -->
 								<div class="modal-footer">
 									<button type="submit" class="btn btn-success">Cadastrar</button>
 								</div>
@@ -85,7 +85,13 @@
 									<td><?php echo $rows_produto['nome']; ?></td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
-										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $rows_produto['id']; ?>" data-whatevernome="<?php echo $rows_produto['nome']; ?>"data-whateverdetalhes="<?php echo $rows_produto['detalhe']; ?>">Editar</button>
+										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" 
+											data-whatever="<?php echo $rows_produto['id']; ?>" 
+											data-whatevervalor="<?php echo $rows_produto['valor']; ?>"
+											data-whateverfoto="<?php echo $rows_produto['foto']; ?>"  
+											data-whatevercodigo_barras="<?php echo $rows_produto['codigo_barras']; ?>" 
+											data-whatevernome="<?php echo $rows_produto['nome']; ?>"
+											data-whateverdetalhes="<?php echo $rows_produto['detalhe']; ?>">Editar</button>
 										<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
 									</td>
 								</tr>
@@ -101,6 +107,7 @@
 												<p><?php echo "ID : ".$rows_produto['id']; ?></p><hr>
 												<p><?php echo "Nome : ".$rows_produto['nome']; ?></p><hr>
 												<p><?php echo "Descrição : ".$rows_produto['detalhe']; ?></p><hr>
+												<p><?php echo "Código de Barras : ".$rows_produto['codigo_barras']; ?></p><hr>
 												<p><?php echo "Preço : ".$rows_produto['valor']; ?></p><hr>
 												<img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 150px; height: 150px;"><br><br>
 											</div>
@@ -152,17 +159,30 @@
 			  </div>
 
 			  <div class="modal-body">
-				<form method="POST" action="http://localhost/estock1/processa.php" enctype="multipart/form-data">
-				  <div class="form-group">
-					<label for="recipient-name" class="control-label">Nome:</label>
-					<input name="nome" type="text" class="form-control" id="recipient-name">
-				  </div>
+				<form method="POST" action="http://localhost/estock1/processa_editar_usuario.php" enctype="multipart/form-data">
+					
+				  	<div class="form-group">
+						<label for="recipient-name" class="control-label">Nome:</label>
+						<input name="nome" type="text" class="form-control" id="recipient-name">
+				  	</div>
 
-				  <div class="form-group">
-					<label for="message-text" class="control-label">Detalhes:</label>
-					<textarea name="detalhes" class="form-control" id="detalhes"></textarea>
-				  </div>
+				  	<div class="form-group">
+						<label for="detalhes" class="control-label">Detalhes:</label>
+						<textarea name="detalhes" class="form-control" id="detalhes"></textarea>
+				  	</div>
 
+					<div class="form-group">
+						<label for="codigo_barras" class="control-label">Código de Barras :</label>
+						<input name="codigo_barras" type="text" class="form-control" id="codigo_barras">
+					</div>
+					<div class="form-group">
+						<label for="valor" class="control-label">Valor :</label>   			<!-- VALOR -->
+						<input name="valor" type="text" class="form-control" id="valor">
+					</div>
+					<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
+								<!-- <img src="teste1.jpg"style="width: 150px; height: 150px;"><br><br> 		 -->
+								<img src="<?php echo "upload/".$rows_produto['id']."1" ?>" style="width: 150px; height: 150px;"><br><br>							<!-- FOTO -->
+					
 					<input name="id" type="hidden" class="form-control" id="id-curso" value="">
 					
 					<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
@@ -177,9 +197,10 @@
 		</div>
 		<!-- fim modal alterar  -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>  
+    <!-- Include plugins -->
     <script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$('#exampleModal').on('show.bs.modal', function (event) {
@@ -187,14 +208,21 @@
 		  var recipient = button.data('whatever') // Extract info from data-* attributes
 		  var recipientnome = button.data('whatevernome')
 		  var recipientdetalhes = button.data('whateverdetalhes')
-		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var recipientfoto = button.data('whateverfoto')
+		  var recipientvalor = button.data('whatevervalor')
+		  var recipientcodigo_barras = button.data('whatevercodigo_barras')
 		  var modal = $(this)
+		  // Pegando dados do modal editar
 		  modal.find('.modal-title').text('ID do curso : 	' + recipient)
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
+		  modal.find('#codigo_barras').val(recipientcodigo_barras)
+		  modal.find('#valor').val(recipientvalor)
 		  
+		//mask
+		$('#valor').mask('#.##0,00', {reverse: true});
+		
 		})
 		function previewImagem(){
 				var imagem = document.querySelector('input[name=imagem]').files[0];

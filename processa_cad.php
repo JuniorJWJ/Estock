@@ -2,7 +2,7 @@
  	session_start();
 	include_once("conexao.php");
 	include('index.php');
-	$nome_foto = filter_input(INPUT_POST, 'nome_foto', FILTER_SANITIZE_STRING);
+	
 	$nome = mysqli_real_escape_string($conn, $_POST['nome']);
 	$detalhes = mysqli_real_escape_string($conn, $_POST['detalhes']);
 	$codigo_barras = mysqli_real_escape_string($conn, $_POST['codigo_barras']);
@@ -29,12 +29,9 @@
         }else{
             echo"formato inválido";
         } 
-    
 
-	
-	$imagem = $_SESSION['foto'];
-	$result_produtos = "INSERT INTO produto (nome, 	  detalhe,   codigo_barras,  valor, Foto) 
-						             VALUES ('$nome','$detalhes','$codigo_barras','$valor', '$novo_nome')";	
+	$result_produtos = "INSERT INTO produto (nome, detalhe, codigo_barras, valor, Foto) 
+						            VALUES ('$nome', '$detalhes', '$codigo_barras', '$valor', '$novo_nome')";	
 	$resultado_produtos = mysqli_query($conn, $result_produtos);	
 ?>
 
