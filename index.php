@@ -23,7 +23,7 @@
 				<h1>Listar Produtos</h1>
 			</div>
 			<div class="pull-right">
-				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar</button>
+				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
 			</div>
 			<!-- Inicio Modal CADASTRO -->
 			<div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -52,6 +52,19 @@
 									<label for="recipient-name" id = "valor1"class="control-label">Valor :</label>   			<!-- VALOR -->
 									<input name="valor" type="text" class="form-control">
 								</div>
+								<div class="form-group">
+									Categoria do Produto:
+									<select name="categoria" class="form-control" id="exampleFormControlSelect1">
+									<option>Selecione</option>
+										<?php
+											$result_categoria = "SELECT * FROM categoria";
+											$resultado_categoria = mysqli_query($conn, $result_categoria);
+											while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
+												<option value="<?php echo $row_categoria['id']; ?>"><?php echo $row_categoria['nome']; ?></option> <?php
+											}
+										?>
+								</select><br><br>
+								</div>
 								<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
 								<img style="width: 150px; height: 150px;"><br><br> 									<!-- FOTO -->
 								<div class="modal-footer">
@@ -63,6 +76,33 @@
 				</div>
 			</div>
 			<!-- Fim Modal CADASTRO -->
+			
+			<div class="pull-right">
+				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
+			</div>
+			<!-- Inicio Modal CADASTRO  Categoria-->
+			<div class="modal fade" id="myModalcadCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Categoria</h4>
+						</div>
+						<div class="modal-body">
+							<form method="POST" action="http://localhost/Estock1/processa_categoria_cadastro.php" enctype="multipart/form-data">
+							
+								<div class="form-group">
+									<label for="recipient-name" class="control-label">Nome da categoria :</label>   	<!-- NOME DO CATEGORIA -->
+									<input name="nome" type="text" class="form-control">
+								</div>
+								<button type="submit" class="btn btn-success">Cadastrar</button>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Fim Modal CADASTRO Categoria -->
 			
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
@@ -108,7 +148,15 @@
 												<p><?php echo "Nome : ".$rows_produto['nome']; ?></p><hr>
 												<p><?php echo "Descrição : ".$rows_produto['detalhe']; ?></p><hr>
 												<p><?php echo "Código de Barras : ".$rows_produto['codigo_barras']; ?></p><hr>
-												<p><?php echo "Preço : ".$rows_produto['valor']; ?></p><hr>
+												<p><?php echo "Preço : ".$rows_produto['valor'	]; ?></p><hr>
+												<p><?php $teste = $rows_produto['fk_categoria']; 
+													$teste1 = "SELECT nome FROM categoria WHERE id='$teste'";
+													$result = mysqli_query($conn, $teste1);
+													echo "Categoria : ".$result['nome'];
+												?></p><hr>
+												
+
+												<p><?php echo "Categoria : ".$rows_produto['fk_categoria']; ?></p><hr>
 												<img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 150px; height: 150px;"><br><br>
 											</div>
 										</div>

@@ -8,6 +8,7 @@
 	$codigo_barras = mysqli_real_escape_string($conn, $_POST['codigo_barras']);
 	$valor = mysqli_real_escape_string($conn, $_POST['valor']);
 	$nome_foto = $_FILES['imagem']['name'];
+	$categoria = $_POST['categoria'];
 
 
 	
@@ -30,8 +31,8 @@
             echo"formato inválido";
         } 
 
-	$result_produtos = "INSERT INTO produto (nome, detalhe, codigo_barras, valor, Foto) 
-						            VALUES ('$nome', '$detalhes', '$codigo_barras', '$valor', '$novo_nome')";	
+	$result_produtos = "INSERT INTO produto (nome, detalhe, codigo_barras, valor, Foto, fk_categoria) 
+						            VALUES ('$nome', '$detalhes', '$codigo_barras', '$valor', '$novo_nome', '$categoria')";	
 	$resultado_produtos = mysqli_query($conn, $result_produtos);	
 ?>
 
