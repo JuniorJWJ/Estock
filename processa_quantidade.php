@@ -16,14 +16,14 @@
 	<body> <?php
 		if(mysqli_affected_rows($conn) != 0){
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock1/estoque.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock-master/estoque.php'>
 				<script type=\"text/javascript\">
 					alert(\"Curso alterado com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock1/estoque.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock-master/estoque.php'>
 				<script type=\"text/javascript\">
 					alert(\"Curso não foi alterado com Sucesso.\");
 				</script>

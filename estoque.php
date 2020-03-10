@@ -121,31 +121,98 @@
 						</thead>
 						<tbody>
 							<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
-								<tr>
-									<td><?php echo $rows_produto['id']; ?></td>
-									<td><?php echo $rows_produto['nome']; ?></td>
-                                    <td><?php echo $rows_produto['codigo_barras']; ?></td>
-                                    <td>
-                                    <form method="POST" action="http://localhost/estock1/processa_quantidade.php" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-                                            <input type="number" id="quantity" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
-                                            <input type="submit" value ="Alterar quantidade"></td>
-                                        </div>
-                                    </form>
+								<?php $quantidade = $rows_produto['quantidade'] ?>
+								<?php if($quantidade>0){ ?>
+									<tr>
+										<td><?php echo $rows_produto['id']; ?></td>
+										<td><?php echo $rows_produto['nome']; ?></td>
+										<td><?php echo $rows_produto['codigo_barras']; ?></td>
+										<td>
+										<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
+											<div class="form-group">
+												<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
+												<input type="number" id="quantity" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
+												<input type="submit" value ="Alterar quantidade"></td>
+											</div>
+										</form>
 
-								</tr>   
+									</tr>   
+								<?php } ?>
 							<?php } ?>
 						</tbody>
-					 </table>
+					</table>
+			</div>
+		</div>		
+	</div>
+	<!-- ESGOTADOS  ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS-->
+	<?php	
+		$result_cursos = "SELECT * FROM produto";
+		$resultado_cursos = mysqli_query($conn, $result_cursos);
+	?>
+	<div class="container theme-showcase" role="main">
+			<div class="page-header">
+				<h1>Esgotados : </h1>
+			</div>
+			<div class="container theme-showcase" role="main">
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Nome do Produto</th>
+									<th>Código de Barras</th>
+									<th>Quantidade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
+									<?php $quantidade = $rows_produto['quantidade'] ?>
+									<?php if($quantidade<=0){ ?>
+										<tr>
+											<td><?php echo $rows_produto['id']; ?></td>
+											<td><?php echo $rows_produto['nome']; ?></td>
+											<td><?php echo $rows_produto['codigo_barras']; ?></td>
+											<td>
+											<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
+												<div class="form-group">
+													<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
+													<input type="number" id="quantity" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
+													<input type="submit" value ="Alterar quantidade"></td>
+												</div>
+											</form>
+
+										</tr>   
+									<?php } ?>
+								<?php } ?>
+							</tbody>
+						</table>
 				</div>
 			</div>		
-		</div>
+	</div>
 		
 		
 		
 
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
