@@ -131,7 +131,7 @@
 									<td><?php echo $rows_produto['nome']; ?></td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
-										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" 
+										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" 
 											data-whatever="<?php echo $rows_produto['id']; ?>" 
 											data-whatevervalor="<?php echo $rows_produto['valor']; ?>"
 											data-whateverfoto="<?php echo $rows_produto['foto']; ?>"  
@@ -194,6 +194,47 @@
 								</div>
 
 								<!-- fim modal apagar  -->
+								<!-- inicio modal ALTERAR  -->
+								<div class="modal fade" id="exampleModal<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												<h4 class="modal-title" id="exampleModalLabel">Produto</h4>
+											</div>
+											<div class="modal-body">
+													<form method="POST" action="http://localhost/Estock-master/processa_editar_usuario.php" enctype="multipart/form-data">
+														<div class="form-group">
+															<label for="recipient-name" class="control-label">Nome:</label>
+															<input value="<?php echo $rows_produto['nome']; ?>" name="nome" type="text" class="form-control" id="recipient-name">
+														</div>
+
+														<div class="form-group">
+															<label for="detalhes" class="control-label">Detalhes:</label>
+															<textarea v name="detalhes" class="form-control" id="detalhes"><?php echo $rows_produto['detalhe']; ?></textarea>
+														</div>
+
+														<div class="form-group">
+															<label for="codigo_barras" class="control-label">Código de Barras :</label>
+															<input value="<?php echo $rows_produto['codigo_barras']; ?>" name="codigo_barras" type="text" class="form-control" id="codigo_barras">
+														</div>
+
+														<div class="form-group">
+															<label for="valor" class="control-label">Valor :</label>   			<!-- VALOR -->
+															<input value="<?php echo $rows_produto['valor']; ?>" name="valor" type="text" class="form-control" id="valor">
+														</div>
+														<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
+														<img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 150px; height: 150px;"><br><br>							<!-- FOTO -->
+														<input name="id" type="hidden" class="form-control" id="id-curso" value="<?php echo $rows_produto['id']; ?>">
+														
+														<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+														<button type="submit" class="btn btn-danger">Alterar</button>
+													</form>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- fim modal alterar  -->
 							<?php } ?>
 						</tbody>
 					 </table>
@@ -204,53 +245,7 @@
 		
 		
 
-		<!-- inicio modal ALTERAR  -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="exampleModalLabel">Curso</h4>
-			  </div>
-
-			  <div class="modal-body">
-				<form method="POST" action="http://localhost/estock1/processa_editar_usuario.php" enctype="multipart/form-data">
-					
-				  	<div class="form-group">
-						<label for="recipient-name" class="control-label">Nome:</label>
-						<input name="nome" type="text" class="form-control" id="recipient-name">
-				  	</div>
-
-				  	<div class="form-group">
-						<label for="detalhes" class="control-label">Detalhes:</label>
-						<textarea name="detalhes" class="form-control" id="detalhes"></textarea>
-				  	</div>
-
-					<div class="form-group">
-						<label for="codigo_barras" class="control-label">Código de Barras :</label>
-						<input name="codigo_barras" type="text" class="form-control" id="codigo_barras">
-					</div>
-					<div class="form-group">
-						<label for="valor" class="control-label">Valor :</label>   			<!-- VALOR -->
-						<input name="valor" type="text" class="form-control" id="valor">
-					</div>
-					<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
-								<!-- <img src="teste1.jpg"style="width: 150px; height: 150px;"><br><br> 		 -->
-								<img src="<?php echo "upload/".$rows_produto['id']."1" ?>" style="width: 150px; height: 150px;"><br><br>							<!-- FOTO -->
-					
-					<input name="id" type="hidden" class="form-control" id="id-curso" value="">
-					
-					<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-					<button type="submit" class="btn btn-danger">Alterar</button>
-			 
-				</form>
-			  </div>
-			  
-			</div>
-
-		  </div>
-		</div>
-		<!-- fim modal alterar  -->
+		
 
     <!-- jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
