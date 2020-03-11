@@ -17,16 +17,16 @@
 	<body> <?php
 		if(mysqli_affected_rows($conn) != 0){
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock1/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
 				<script type=\"text/javascript\">
-					alert(\"Produto Cadastrado com Sucesso.\");
+					alert(\"Categoria Cadastrada com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock1/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
 				<script type=\"text/javascript\">
-					alert(\"Produto não foi cadastrado com Sucesso.\");
+					alert(\"Categoria não foi cadastrada com Sucesso.\");
 				</script>
 			";	
 		}?>

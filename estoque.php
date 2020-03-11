@@ -19,95 +19,13 @@
 	</head>
 	<body>
 	<div class="container theme-showcase" role="main">
-			<div class="page-header">
-				<h1>Estoque</h1>
-			</div>
-			<div class="pull-right">
-				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
-			</div>
-			<!-- Inicio Modal CADASTRO -->
-			<div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Produto</h4>
-						</div>
-						<div class="modal-body">
-							<form method="POST" action="http://localhost/Estock1/processa_cad.php" enctype="multipart/form-data">
-								<!-- <input type="hidden" name="nome_foto"  value ="<?php echo '22'?>"><br><br> -->
-								<div class="form-group">
-									<label for="recipient-name" class="control-label">Nome do produto :</label>   	<!-- NOME DO PRODUTO -->
-									<input name="nome" type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="control-label">Código de barras :</label>  	<!-- CÓDIGO DE BARRAS -->
-									<input name="codigo_barras" type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="message-text" class="control-label">Descrição :</label> 			<!-- DESCRIÇÃO -->
-									<textarea name="detalhes" class="form-control"></textarea>
-								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="control-label">Valor :</label>   			<!-- VALOR -->
-									<input name="valor" type="text" class="form-control" id = "valor1" >
-								</div>
-								<div class="form-group">
-									Categoria do Produto:
-									<select name="categoria" class="form-control" id="exampleFormControlSelect1">
-									<option>Selecione</option>
-										<?php
-											$result_categoria = "SELECT * FROM categoria";
-											$resultado_categoria = mysqli_query($conn, $result_categoria);
-											while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
-												<option value="<?php echo $row_categoria['id']; ?>"><?php echo $row_categoria['nome']; ?></option> <?php
-											}
-										?>
-								</select><br><br>
-								</div>
-								<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
-								<img style="width: 150px; height: 150px;"><br><br> 									<!-- FOTO -->
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-success">Cadastrar</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Fim Modal CADASTRO -->
-			
-			<div class="pull-right">
-				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
-			</div>
-			<!-- Inicio Modal CADASTRO  Categoria-->
-			<div class="modal fade" id="myModalcadCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Categoria</h4>
-						</div>
-						<div class="modal-body">
-							<form method="POST" action="http://localhost/Estock1/processa_categoria_cadastro.php" enctype="multipart/form-data">
-							
-								<div class="form-group">
-									<label for="recipient-name" class="control-label">Nome da categoria :</label>   	<!-- NOME DO CATEGORIA -->
-									<input name="nome" type="text" class="form-control">
-								</div>
-								<button type="submit" class="btn btn-success">Cadastrar</button>
-								
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Fim Modal CADASTRO Categoria -->
-			
+		<div class="page-header">
+			<h1>Estoque</h1>
+		</div>
+		<div class="pull-right">
+			<a href="http://localhost/estock-master/index.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Produto</button></a>
+		</div>
 		<div class="container theme-showcase" role="main">
-			<div class="page-header">
-				
-			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table">
@@ -116,10 +34,11 @@
 								<th>#</th>
 								<th>Nome do Produto</th>
                                 <th>Código de Barras</th>
-								<th>Quantidade</th>
+								<th>Quantidade/Ação</th>
+								
 							</tr>
 						</thead>
-						<tbody>
+						<tbody> <!-- EXIBIR ESTOQUE-->
 							<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
 								<?php $quantidade = $rows_produto['quantidade'] ?>
 								<?php if($quantidade>0){ ?>
@@ -131,7 +50,7 @@
 										<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
 											<div class="form-group">
 												<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-												<input type="number" id="quantity" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
+												<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
 												<input type="submit" value ="Alterar quantidade"></td>
 											</div>
 										</form>
@@ -162,7 +81,7 @@
 									<th>#</th>
 									<th>Nome do Produto</th>
 									<th>Código de Barras</th>
-									<th>Quantidade</th>
+									<th>Quantidade/Ação</th>
 								</tr>
 							</thead>
 							<tbody>

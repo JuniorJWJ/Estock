@@ -19,8 +19,12 @@
 	</head>
 	<body>
 	<div class="container theme-showcase" role="main">
+			
 			<div class="page-header">
 				<h1>Listar Produtos</h1>
+			</div>
+			<div class="pull-left">
+				<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Estoque</button></a>
 			</div>
 			<div class="pull-right">
 				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
@@ -34,8 +38,7 @@
 							<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Produto</h4>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="http://localhost/Estock1/processa_cad.php" enctype="multipart/form-data">
-								<!-- <input type="hidden" name="nome_foto"  value ="<?php echo '22'?>"><br><br> -->
+							<form method="POST" action="http://localhost/Estock-master/processa_cad.php" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="recipient-name" class="control-label">Nome do produto :</label>   	<!-- NOME DO PRODUTO -->
 									<input name="nome" type="text" class="form-control">
@@ -95,7 +98,7 @@
 							<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Categoria</h4>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="http://localhost/Estock1/processa_categoria_cadastro.php" enctype="multipart/form-data">
+							<form method="POST" action="http://localhost/Estock-master/processa_categoria_cadastro.php" enctype="multipart/form-data">
 							
 								<div class="form-group">
 									<label for="recipient-name" class="control-label">Nome da categoria :</label>   	<!-- NOME DO CATEGORIA -->
