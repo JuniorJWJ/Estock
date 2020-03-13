@@ -17,13 +17,17 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		
 	</head>
-	<body>
+	<body 	>
 	<div class="container theme-showcase" role="main">
 		<div class="page-header">
 			<h1>Estoque</h1>
 		</div>
+		
 		<div class="pull-right">
 			<a href="http://localhost/estock-master/index.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Produto</button></a>
+		</div>
+		<div class="pull-right">
+			<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Sair</button></a>
 		</div>
 		<div class="container theme-showcase" role="main">
 			<div class="row">

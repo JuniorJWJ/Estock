@@ -23,12 +23,19 @@
 			<div class="page-header">
 				<h1>Listar Produtos</h1>
 			</div>
-			<div class="pull-left">
-				<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Estoque</button></a>
-			</div>
 			<div class="pull-right">
-				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
+				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Sair</button></a>
 			</div>
+			<div class="pull-left">
+					<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Estoque</button></a>
+			</div>
+			<?php 	
+			if($_SESSION['permissao']=="1"){?>
+				<div class="pull-right">
+					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
+				</div>
+			<?php }?>
+			
 			<!-- Inicio Modal CADASTRO -->
 			<div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -85,10 +92,11 @@
 				</div>
 			</div>
 			<!-- Fim Modal CADASTRO -->
-			
-			<div class="pull-right">
-				<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
-			</div>
+			<?php if($_SESSION['permissao']=="1"){?>
+				<div class="pull-right">
+					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
+				</div>
+			<?php } ?>
 			<!-- Inicio Modal CADASTRO  Categoria-->
 			<div class="modal fade" id="myModalcadCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -134,14 +142,10 @@
 									<td><?php echo $rows_produto['nome']; ?></td>
 									<td>
 										<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
-										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" 
-											data-whatever="<?php echo $rows_produto['id']; ?>" 
-											data-whatevervalor="<?php echo $rows_produto['valor']; ?>"
-											data-whateverfoto="<?php echo $rows_produto['foto']; ?>"  
-											data-whatevercodigo_barras="<?php echo $rows_produto['codigo_barras']; ?>" 
-											data-whatevernome="<?php echo $rows_produto['nome']; ?>"
-											data-whateverdetalhes="<?php echo $rows_produto['detalhe']; ?>">Editar</button>
+										<?php if($_SESSION['permissao']=="1"){?>
+										<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" >Editar</button>
 										<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
+										<?php } ?>	
 									</td>
 								</tr>
 								<!-- Inicio Modal EXIBIR -->

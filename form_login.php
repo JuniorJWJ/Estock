@@ -31,7 +31,7 @@ session_start();
 					</span>
 				</div>
 
-				<form class="login100-form validate-form" method="POST"  action="valida.php">
+				<form class="login100-form validate-form" method="POST"  action="login.php">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="É preciso um E-mail válido">
 						<span class="label-input100">E-mail</span>
 						<input class="input100" type="text" name="email" placeholder="Insira um E-mail">
@@ -40,7 +40,7 @@ session_start();
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "É preciso uma Senha válida">
 						<span class="label-input100">Senha</span>
-						<input class="input100" type="password" name="senha " placeholder="Insira um Senha">
+						<input class="input100" type="password" name="senha" placeholder="Insira um Senha">
 						<span class="focus-input100"></span>
 					</div>  
 
