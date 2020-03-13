@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Mar-2020 às 19:59
+-- Generation Time: 13-Mar-2020 às 06:00
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -38,7 +38,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nome`) VALUES
-(1, 'Bebida');
+(1, 'Bebida'),
+(2, 'Alimento'),
+(8, 'Som');
 
 -- --------------------------------------------------------
 
@@ -83,15 +85,41 @@ CREATE TABLE `produto` (
   `nome` varchar(30) NOT NULL,
   `detalhe` varchar(30) NOT NULL,
   `valor` float NOT NULL,
-  `Foto` varchar(50) NOT NULL
+  `Foto` varchar(50) NOT NULL,
+  `quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO `produto` (`id`, `fk_categoria`, `codigo_barras`, `nome`, `detalhe`, `valor`, `Foto`) VALUES
-(1, 1, '00010002', 'Heineken 250ml', 'Cerveja Heineken', 2.5, '5e653d7817e30.png');
+INSERT INTO `produto` (`id`, `fk_categoria`, `codigo_barras`, `nome`, `detalhe`, `valor`, `Foto`, `quantidade`) VALUES
+(1, 1, '00010002344', 'Heineken 250ml ', 'Cerveja Heineken ', 22, '5e672815c4170.png', 5),
+(4, 2, '1111123', 'Fofura', 'Fofura cebola', 1.25, '5e67969d24286.png', 1),
+(2, 1, '1211221121344      ', 'Coca-Cola 300ml   ', 'Coca-Cola latinha', 323, '5e67283330a05.png', 0),
+(3, 1, '12113fsdfsd121344', 'testestes', 'sdbjksafjkbadf', 55, '5e698527e97a2.png', 5),
+(5, 8, '1232112231', 'JBL', 'Caixinha de som JBL', 111, '5e679689bedbd.png', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `permissao` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `email`, `senha`, `permissao`) VALUES
+(1, 'teste@teste.com', 'teste1', 1),
+(2, 'teste1@teste.com', 'teste', 0);
 
 --
 -- Indexes for dumped tables
@@ -127,6 +155,12 @@ ALTER TABLE `produto`
   ADD KEY `idCategoria` (`fk_categoria`);
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -134,7 +168,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `empresa`
@@ -146,7 +180,13 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

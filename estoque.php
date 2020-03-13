@@ -69,6 +69,11 @@
 		$resultado_cursos = mysqli_query($conn, $result_cursos);
 	?>
 	<div class="container theme-showcase" role="main">
+	<?php
+		$result_cursos_1 = "SELECT * FROM `produto` WHERE quantidade = 0";
+		$resultado_cursos_1 = mysqli_query($conn, $result_cursos_1);
+
+		if($rows_produto = mysqli_fetch_assoc($resultado_cursos_1)){?>
 			<div class="page-header">
 				<h1>Esgotados : </h1>
 			</div>
@@ -96,18 +101,20 @@
 											<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
 												<div class="form-group">
 													<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-													<input type="number" id="quantity" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
+													<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
 													<input type="submit" value ="Alterar quantidade"></td>
 												</div>
 											</form>
-
-										</tr>   
+										</tr>  
 									<?php } ?>
 								<?php } ?>
-							</tbody>
+						</tbody>
 						</table>
-				</div>
-			</div>		
+					</div>
+			</div>
+		<?php }else{?>
+			<h2> Não há produtos esgotados <h2>
+		<?php } ?>	
 	</div>
 		
 		

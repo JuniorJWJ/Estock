@@ -266,7 +266,7 @@
 		  var recipientcodigo_barras = button.data('whatevercodigo_barras')
 		  var modal = $(this)
 		  // Pegando dados do modal editar
-		  modal.find('.modal-title').text('ID do curso : 	' + recipient)
+		  modal.find('.modal-title').text('ID do produto : 	' + recipient)
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
