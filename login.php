@@ -36,9 +36,11 @@
             $_SESSION['usuarioEmail'] = $resultado['email'];
              echo " 12312";	
             if($_SESSION['permissao'] == "1"){
+                $_SESSION['log'] = "logado";
                 header("Location: index.php");
             }elseif($_SESSION['permissao'] == "0"){
-                 header("Location: estoque.php");
+                $_SESSION['log'] = "logado";
+                header("Location: estoque.php");
             }
         }else{    
             echo "

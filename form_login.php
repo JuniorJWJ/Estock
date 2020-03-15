@@ -1,5 +1,7 @@
 <?php
-session_start();
+	session_start();
+	include_once("conexao.php");
+	$_SESSION['log'] = "deslogado";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +47,14 @@ session_start();
 					</div>  
 
 					<div class="flex-sb-m w-full p-b-30">						
-						<div>
-							<a href="#" class="txt1">
+						<div >
+							<a href="#" class="txt1" >
 								Esqueceu sua senha?
 							</a>
 						</div>
+						<!-- <div class="pull-right">
+							<button type="button" class="btn btn-xs btn-success" data-toggle="modal"data-target="#myModalEmail">teste</button>
+						</div> -->
 					</div>
 
 					<div class="container-login100-form-btn">
@@ -60,6 +65,32 @@ session_start();
 		</div>
 	</div>
 	
+	<!-- Inicio Modal CADASTRO  Categoria-->
+	<!-- <div class="modal fade" id="myModalEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title text-center" id="myModalLabel">Recuperar email</h4>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="http://localhost/Estock-master/recupera_senha.php" enctype="multipart/form-data">
+					
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Digite seu email :</label>  --> 	<!-- EMAIL
+							<input name="emailrecupera" type="email" class="form-control">
+						</div>
+						<button type="submit" class="btn btn-success">Recuperar</button>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- Fim Modal CADASTRO Categoria -->
+
+
+
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -75,7 +106,6 @@ session_start();
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
+	
 </body>
 </html>

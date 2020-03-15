@@ -8,7 +8,7 @@
 		$_SESSION['usuarioEmail'],
 		$_SESSION['usuarioSenha']
 	);
-	
+	$_SESSION['log'] = "deslogado";
 
 	//redirecionar o usuario para a página de login
 	header("Location: form_login.php");
