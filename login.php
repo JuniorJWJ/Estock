@@ -32,7 +32,7 @@
 			";	
             $_SESSION['usuarioId'] = $resultado['id'];
             $_SESSION['usuarioNome'] = $resultado['nome'];
-            $_SESSION['permissao'] = $resultado['permissao'];
+            $_SESSION['permissao'] = $resultado['fk_cargo'];
             $_SESSION['usuarioEmail'] = $resultado['email'];
              echo " 12312";	
             if($_SESSION['permissao'] == "1"){

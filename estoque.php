@@ -25,6 +25,9 @@
 				<a href="http://localhost/estock-master/index.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Produto</button></a>
 			</div>
 			<div class="pull-right">
+				<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Funcionário</button></a>
+			</div>
+			<div class="pull-right">
 				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Sair</button></a>
 			</div>
 			<div class="container theme-showcase" role="main">
@@ -35,6 +38,7 @@
 								<tr>
 									<th>#</th>
 									<th>Nome do Produto</th>
+									<th>Foto</th>
 									<th>Código de Barras</th>
 									<th>Quantidade/Ação</th>
 								</tr>
@@ -46,6 +50,7 @@
 										<tr>
 											<td><?php echo $rows_produto['id']; ?></td>
 											<td><?php echo $rows_produto['nome']; ?></td>
+											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 											<td><?php echo $rows_produto['codigo_barras']; ?></td>
 											<td>
 											<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
