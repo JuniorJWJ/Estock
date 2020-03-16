@@ -1,0 +1,8 @@
+0000-00-00 00:00:00 teste adcionou Informatica no banco de categorias
+0000-00-00 00:00:00 teste cadastrou um novo produto no estoque (Teclado Rayzer I1123I12II) com 3 unidades
+0000-00-00 00:00:00 Gertrudes cadastrou um novo produto no estoque (1231) com 1312 unidades
+2020-03-16 15:50:24 Gertrudes cadastrou um novo produto no estoque (teste1) com 12 unidades
+2020-03-16 15:50:24 Gertrudes cadastrou um novo produto no estoque (teste1) com 12 unidades
+2020-03-16 16:03:48 Gertrudes entrou no sistema
+2020-03-16 16:03:50 Gertrudes deslogou do sistema
+2020-03-16 16:07:33 Gertrudes entrou no sistema

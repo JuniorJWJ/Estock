@@ -33,6 +33,9 @@
 			<?php 	
 			if($_SESSION['permissao']=="1"){?>
 				<div class="pull-left">
+					<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" >Gerar relatório</button></a>
+				</div>
+				<div class="pull-left">
 						<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" >Funcionário</button></a>
 				</div>
 				<div class="pull-right">

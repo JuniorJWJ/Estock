@@ -16,6 +16,9 @@
 
 	<body> <?php
 		if(mysqli_affected_rows($conn) != 0){
+			$processo = $_SESSION['usuarioNome']." adcionou ".$nome." no banco de categorias";
+			$result_processo = "INSERT INTO log (processo) VALUES ('$processo')";	
+			$resultado_processos = mysqli_query($conn, $result_processo);
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
 				<script type=\"text/javascript\">

@@ -24,17 +24,16 @@
         //var_dump($resultado);
         
         //Encontrado um usuario na tabela usuário com os mesmos dados digitado no formulário
-        if(isset($resultado)){ //se encontrou
-            echo "
-				<script type=\"text/javascript\">
-					alert(\"Chegou aqui1.\");
-				</script>
-			";	
+        if(isset($resultado)){ 
             $_SESSION['usuarioId'] = $resultado['id'];
             $_SESSION['usuarioNome'] = $resultado['nome'];
             $_SESSION['permissao'] = $resultado['fk_cargo'];
             $_SESSION['usuarioEmail'] = $resultado['email'];
-             echo " 12312";	
+
+            $processo = $_SESSION['usuarioNome']." entrou no sistema";
+			$result_processo = "INSERT INTO log (processo, horario) VALUES ('$processo', NOW())";	
+            $resultado_processos = mysqli_query($conn, $result_processo);
+            
             if($_SESSION['permissao'] == "1"){
                 $_SESSION['log'] = "logado";
                 header("Location: index.php");
@@ -42,19 +41,14 @@
                 $_SESSION['log'] = "logado";
                 header("Location: estoque.php");
             }
-        }else{    
-            echo "
-	 			<script type=\"text/javascript\">
- 				alert(\"dados errados aqui.\");
-	 			</script>
-	 		";
+        }else{   
             header("Location: form_login.php");
         }
     //O campo usuário e senha não preenchido entra no else e redireciona o usuário para a página de login
     }else{
          echo "
 	 			<script type=\"text/javascript\">
- 				alert(\"dados errados aqui.\");
+ 				alert(\"dados errados .\");
 	 			</script>
 	 		";
          header("Location: form_login.php");

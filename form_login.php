@@ -52,9 +52,6 @@
 								Esqueceu sua senha?
 							</a>
 						</div>
-						<!-- <div class="pull-right">
-							<button type="button" class="btn btn-xs btn-success" data-toggle="modal"data-target="#myModalEmail">teste</button>
-						</div> -->
 					</div>
 
 					<div class="container-login100-form-btn">
