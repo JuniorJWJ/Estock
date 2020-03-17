@@ -1,0 +1,5 @@
+*Organizar em funções
+*MVC
+*Alterar o nome dos arquivos
+*Limpar o código
+*Tratar erros

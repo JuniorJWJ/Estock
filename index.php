@@ -155,9 +155,7 @@
 													<form method="POST" action="http://localhost/estock1/proc_apagar_usuario.php" enctype="multipart/form-data">
 															<input name="id" type="hidden" class="form-control" id="id-curso" value="">
 															<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-															<button type="submit" class="btn btn-danger">Apagar</button>
-															<?php echo "<a href='proc_apagar_usuario.php?id=".$rows_produto['id'] ."'>   Apagar</a><br><hr>";?>
-													
+															<a href="<?php echo "proc_apagar_usuario.php?id=".$rows_produto['id'] ."";?>"><button type="button" class="btn btn-danger" >Apagar</button></a>
 													</form>
 												</div>
 											</div>

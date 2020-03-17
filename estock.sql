@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Mar-2020 às 21:06
+-- Generation Time: 13-Mar-2020 às 06:00
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -25,25 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cargo`
---
-
-CREATE TABLE `cargo` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `cargo`
---
-
-INSERT INTO `cargo` (`id`, `nome`) VALUES
-(1, 'Gerente'),
-(2, 'Funcionario');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `categoria`
 --
 
@@ -59,10 +40,7 @@ CREATE TABLE `categoria` (
 INSERT INTO `categoria` (`id`, `nome`) VALUES
 (1, 'Bebida'),
 (2, 'Alimento'),
-(8, 'Som'),
-(9, 'Brinquedo'),
-(10, 'Enfeite'),
-(11, 'Informatica');
+(8, 'Som');
 
 -- --------------------------------------------------------
 
@@ -97,29 +75,6 @@ CREATE TABLE `estoque` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `log`
---
-
-CREATE TABLE `log` (
-  `id` int(11) NOT NULL,
-  `processo` varchar(120) NOT NULL,
-  `horario` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `log`
---
-
-INSERT INTO `log` (`id`, `processo`, `horario`) VALUES
-(4, 'Gertrudes cadastrou um novo produto no estoque (teste1) com 12 unidades', '2020-03-16 15:50:24'),
-(6, 'Gertrudes entrou no sistema', '2020-03-16 16:03:48'),
-(7, 'Gertrudes deslogou do sistema', '2020-03-16 16:03:50'),
-(8, 'Gertrudes entrou no sistema', '2020-03-16 16:07:33'),
-(9, 'Gertrudes deslogou do sistema', '2020-03-16 16:07:42');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `produto`
 --
 
@@ -141,11 +96,9 @@ CREATE TABLE `produto` (
 INSERT INTO `produto` (`id`, `fk_categoria`, `codigo_barras`, `nome`, `detalhe`, `valor`, `Foto`, `quantidade`) VALUES
 (1, 1, '00010002344', 'Heineken 250ml ', 'Cerveja Heineken ', 22, '5e672815c4170.png', 5),
 (4, 2, '1111123', 'Fofura', 'Fofura cebola', 1.25, '5e67969d24286.png', 1),
-(6, 11, '11231221', 'Teclado Rayzer I1123I12II', 'Teclado Rayzer batenu certo', 333.99, '5e6f1223cbb8d.jpg', 3),
-(2, 1, '1211221121344      ', 'Coca-Cola 300ml   ', 'Coca-Cola latinha', 323, '5e67283330a05.png', 2),
-(5, 8, '1232112231', 'JBL', 'Caixinha de som JBL', 111, '5e679689bedbd.png', 3),
-(7, 10, '231', '1231', '23123', 123123, '5e6fca26d03af.jpg', 1312),
-(8, 10, '312313', 'teste1', 'teste2', 12312, '5e6fca70294c0.jpg', 12);
+(2, 1, '1211221121344      ', 'Coca-Cola 300ml   ', 'Coca-Cola latinha', 323, '5e67283330a05.png', 0),
+(3, 1, '12113fsdfsd121344', 'testestes', 'sdbjksafjkbadf', 55, '5e698527e97a2.png', 5),
+(5, 8, '1232112231', 'JBL', 'Caixinha de som JBL', 111, '5e679689bedbd.png', 3);
 
 -- --------------------------------------------------------
 
@@ -157,32 +110,20 @@ CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `senha` varchar(20) NOT NULL,
-  `permissao` tinyint(1) NOT NULL,
-  `cpf` varchar(20) NOT NULL,
-  `foto` varchar(50) NOT NULL,
-  `fk_cargo` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL
+  `permissao` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `email`, `senha`, `permissao`, `cpf`, `foto`, `fk_cargo`, `nome`) VALUES
-(1, 'adm@adm.com', 'teste1', 1, '', '', 1, 'Gertrudes'),
-(2, 'func@func.com', 'teste', 0, '', '', 0, 'teste1'),
-(4, 'felipepereira@felipe.com', 'teste', 1, '12345678900', '5e6d7b99293db.jpg', 2, 'Felipe pereira'),
-(5, '5345@321312', '34534', 1, '543534', '5e6d7bf56a81b.jpg', 1, '4543');
+INSERT INTO `usuario` (`id`, `email`, `senha`, `permissao`) VALUES
+(1, 'teste@teste.com', 'teste1', 1),
+(2, 'teste1@teste.com', 'teste', 0);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cargo`
---
-ALTER TABLE `cargo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categoria`
@@ -206,12 +147,6 @@ ALTER TABLE `estoque`
   ADD KEY `idProduto` (`idProduto`);
 
 --
--- Indexes for table `log`
---
-ALTER TABLE `log`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `produto`
 --
 ALTER TABLE `produto`
@@ -230,16 +165,10 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT for table `cargo`
---
-ALTER TABLE `cargo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `empresa`
@@ -248,22 +177,16 @@ ALTER TABLE `empresa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `log`
---
-ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

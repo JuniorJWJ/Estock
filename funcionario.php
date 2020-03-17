@@ -35,9 +35,6 @@
 				<div class="pull-right">
 					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalCadFunc">Cadastrar Funcionário</button>
 				</div>
-				<div class="pull-right">
-					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalReadFunc">Exibir Funcionário</button>
-				</div>
 			<?php } ?>
 			<div class="container theme-showcase" role="main">
 				<div class="page-header">
@@ -60,8 +57,8 @@
 										<td>
 											<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalShowFunc<?php echo $rows_funcionario['id']; ?>">Visualizar</button>
 											<?php if($_SESSION['permissao']=="1"){?>
-											<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModalFunc<?php echo $rows_funcionario['id']; ?>" >Editar</button>
-											<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#myModalDelFunc<?php echo $rows_funcionario['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
+											<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#editFunc<?php echo $rows_funcionario['id']; ?>" >Editar</button>
+											<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#ModalDelFunc<?php echo $rows_funcionario['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
 											<?php } ?>	
 										</td>
                                     </tr>
@@ -86,12 +83,88 @@
                                                         $row_cargo1 = mysqli_fetch_assoc($result);
                                                         echo "Cargo : ".$row_cargo1['nome'];
                                                     ?></p><hr>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- FIM MODAL EXIBIR FUNCIONARIO -->
+
+									<!-- INICIO MODAL ALTERAR PRODUTO -->
+									<div class="modal fade" id="editFunc<?php echo $rows_funcionario['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Funcionário</h4>
+												</div>
+												<div class="modal-body">
+													<form method="POST" action="http://localhost/Estock-master/processa_editar_funcionario.php" enctype="multipart/form-data">
+														<div class="form-group">
+															<label for="recipient-name" class="control-label">Nome :</label>   	<!-- NOME DO FUNCIONARIO -->
+															<input 	value="<?php echo $rows_funcionario['nome']; ?>" name="nome" type="text" class="form-control">
+														</div>
+														<div class="form-group">
+															<label for="recipient-name" class="control-label">CPF :</label>  	<!-- CPF -->
+															<input value="<?php echo $rows_funcionario['cpf']; ?>" name="cpf" type="text" class="form-control">
+														</div>
+														<div class="form-group">
+															<label for="recipient-name" class="control-label">E-mail :</label>  	<!-- Email -->
+															<input  value="<?php echo $rows_funcionario['email']; ?>" name="email" type="email" class="form-control">
+														</div>
+														<div class="form-group">
+															<label for="recipient-name" class="control-label">Senha :</label>   			<!-- SENHA -->
+															<input  value="<?php echo $rows_funcionario['senha']; ?>" name="senha" type="text" class="form-control" id = "valor1" >
+														</div>
+														<div class="form-group">
+															Cargo :
+															<select name="cargo" class="form-control" id="exampleFormControlSelect1">
+															<option> <?php $teste = $rows_funcionario['fk_cargo']; 
+																		$teste1 = "SELECT nome FROM cargo WHERE id='$teste'";
+																		$result = mysqli_query($conn, $teste1);
+																		$row_cargo1 = mysqli_fetch_assoc($result);
+																		echo $row_cargo1['nome'];
+																	?> </option>
+																<?php
+																	$result_cargo = "SELECT * FROM cargo";                                //CARGO 
+																	$resultado_cargo = mysqli_query($conn, $result_cargo);
+																	while($row_cargo = mysqli_fetch_assoc($resultado_cargo)){ ?>
+																		<option value="<?php echo $row_cargo['id']; ?>"><?php echo $row_cargo['nome']; ?></option> <?php
+																	}
+																?>
+														</select><br><br>
+														</div>
+														<input name="id" type="hidden" class="form-control" id="id-curso" value="<?php echo $rows_funcionario['id']; ?>">
+														<input type="file" name="imagem" id="imagem1" onchange="previewImagem()"><br><br>
+														<img src="<?php echo "upload/".$rows_funcionario['foto'] ?>" style="width: 150px; height: 150px;"><br><br>						<!-- FOTO -->
+															<div class="modal-footer">
+															<button type="submit" class="btn btn-success">Alterar</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- FIM MODAL ALTERAR PRODUTO  -->
+									<!-- MODAL APAGAR PRODUTO -->
+									<div class="modal fade" id="ModalDelFunc<?php echo $rows_funcionario['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $rows_funcionario['nome']; ?></h4>
+												</div>
+												<div class="modal-body">
+													<p>Tem certeza que deseja apagar o <?php echo "  ".$rows_funcionario['nome']; ?> ?</p>
+													<form method="POST" action="http://localhost/estock1/proc_apagar_funcionario.php" enctype="multipart/form-data">
+															<input name="id" type="hidden" class="form-control" id="id-curso" value="">
+															<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+															<a href="<?php echo "proc_apagar_funcionario.php?id=".$rows_funcionario['id'] ."";?>"><button type="button" class="btn btn-danger" >Apagar</button></a>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- FIM MODAL APAGAR PRODUTO-->
 								<?php } ?>
 							</tbody>
 						</table>
