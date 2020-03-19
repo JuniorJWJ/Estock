@@ -7,9 +7,10 @@
 	$codigo_barras = mysqli_real_escape_string($conn, $_POST['codigo_barras']);
 	$valor = mysqli_real_escape_string($conn, $_POST['valor']);
 	$nome_foto = $_FILES['imagem']['name'];
+	$imagem = $_POST['imagem'];
 	echo "$id - $nome - $detalhes";
     
-	
+
 		$formatosPermitidos = array("png","jpeg", "jpg");
 			$extensao = pathinfo($_FILES['imagem']['name'],PATHINFO_EXTENSION );
 		
@@ -27,7 +28,7 @@
 			}else{
 				echo"formato inválido";
 			} 
-
+	
 
 
     $result_produtos = "UPDATE produto SET nome = '$nome', detalhe = '$detalhes', valor = '$valor', codigo_barras = '$codigo_barras',Foto = '$novo_nome' 

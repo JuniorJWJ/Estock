@@ -42,14 +42,14 @@
 	<body> <?php
 		if(mysqli_affected_rows($conn) != 0){
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>
 				<script type=\"text/javascript\">
 					alert(\"Funcionário Cadastrado com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>
 				<script type=\"text/javascript\">
 					alert(\"Funcionário não foi cadastrado com Sucesso.\");
 				</script>
