@@ -16,6 +16,6 @@
 		<script type=\"text/javascript\">
 			alert(\"Relatório gerado com Sucesso.\");
 		</script>";
-	header("Location: index.php");
+	header("Location: funcionario.php");
 ?>
 

@@ -14,7 +14,7 @@
                     <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Produto</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="http://localhost/Estock-master/processa_cad.php" enctype="multipart/form-data">
+                    <form method="POST" action="http://localhost/Estock-master/produto_create.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Nome do produto :</label>   	<!-- NOME DO PRODUTO -->
                             <input name="nome" type="text" class="form-control">
@@ -73,7 +73,7 @@
                     <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Categoria</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="http://localhost/Estock-master/processa_categoria_cadastro.php" enctype="multipart/form-data">
+                    <form method="POST" action="http://localhost/Estock-master/categoria_create.php" enctype="multipart/form-data">
                     
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Nome da categoria :</label>   	<!-- NOME DO CATEGORIA -->
@@ -106,7 +106,7 @@
                     <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Funcionário</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="http://localhost/Estock-master/processa_func.php" enctype="multipart/form-data">
+                    <form method="POST" action="http://localhost/Estock-master/funcionario_create.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Nome :</label>   	<!-- NOME DO FUNCIONARIO -->
                             <input name="nome" type="text" class="form-control">

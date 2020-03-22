@@ -44,14 +44,14 @@
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>
 				<script type=\"text/javascript\">
-					alert(\"Produto alterado com Sucesso.\");
+					alert(\"Funcionário alterado com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>
 				<script type=\"text/javascript\">
-					alert(\"Produto não foi alterado com Sucesso.\");
+					alert(\"Funcionário não foi alterado com Sucesso.\");
 				</script>
 			";	
 		}?>

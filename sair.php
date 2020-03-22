@@ -15,5 +15,5 @@
 	$_SESSION['log'] = "deslogado";
 
 	//redirecionar o usuario para a página de login
-	header("Location: form_login.php");
+	header("Location: index.php");
 ?>

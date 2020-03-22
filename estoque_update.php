@@ -18,14 +18,14 @@
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock-master/estoque.php'>
 				<script type=\"text/javascript\">
-					alert(\"Curso alterado com Sucesso.\");
+					alert(\"Quantidade alterada com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/estock-master/estoque.php'>
 				<script type=\"text/javascript\">
-					alert(\"Curso não foi alterado com Sucesso.\");
+					alert(\"Quantidade alterada com Sucesso.\");
 				</script>
 			";	
 		}?>

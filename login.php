@@ -12,11 +12,7 @@
         //var_dump($email);
         $senha = mysqli_real_escape_string($conn, $_POST['senha']);
         //var_dump($senha);
-        echo "
-        <script type=\"text/javascript\">
-            alert(\"Chegou aqui2.\");
-        </script>
-    ";	
+        	
         //Buscar na tabela 
         $result_usuario = "SELECT * FROM usuario WHERE email = '$email' && senha = '$senha' LIMIT 1";
         $resultado_usuario = mysqli_query($conn, $result_usuario);
@@ -36,13 +32,13 @@
             
             if($_SESSION['permissao'] == "1"){
                 $_SESSION['log'] = "logado";
-                header("Location: index.php");
+                header("Location: produto.php");
             }elseif($_SESSION['permissao'] == "0"){
                 $_SESSION['log'] = "logado";
                 header("Location: estoque.php");
             }
         }else{   
-            header("Location: form_login.php");
+            header("Location: index.php");
         }
     //O campo usuário e senha não preenchido entra no else e redireciona o usuário para a página de login
     }else{
@@ -51,6 +47,6 @@
  				alert(\"dados errados .\");
 	 			</script>
 	 		";
-         header("Location: form_login.php");
+         header("Location: index.php");
      }
 ?>

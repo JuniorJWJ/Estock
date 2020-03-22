@@ -22,13 +22,13 @@
 			</div>
 			
 			<div class="pull-right">
-				<a href="http://localhost/estock-master/index.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Produto</button></a>
+				<a href="http://localhost/estock-master/produto.php"><button type="button" class="btn btn-xs btn-success" >Produto</button></a>
 			</div>
 			<div class="pull-right">
-				<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Funcionário</button></a>
+				<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" >Funcionário</button></a>
 			</div>
 			<div class="pull-right">
-				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Sair</button></a>
+				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" >Sair</button></a>
 			</div>
 			<div class="container theme-showcase" role="main">
 				<div class="row">
@@ -43,7 +43,7 @@
 									<th>Quantidade/Ação</th>
 								</tr>
 							</thead>
-							<tbody> <!-- EXIBIR ESTOQUE-->
+							<tbody>                         <!-- EXIBIR ESTOQUE-->
 								<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
 									<?php $quantidade = $rows_produto['quantidade'] ?>
 									<?php if($quantidade>0){ ?>
@@ -53,7 +53,7 @@
 											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 											<td><?php echo $rows_produto['codigo_barras']; ?></td>
 											<td>
-											<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
+											<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
 												<div class="form-group">
 													<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 													<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
@@ -103,7 +103,7 @@
 												<td><?php echo $rows_produto['nome']; ?></td>
 												<td><?php echo $rows_produto['codigo_barras']; ?></td>
 												<td>
-												<form method="POST" action="http://localhost/estock-master/processa_quantidade.php" enctype="multipart/form-data">
+												<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
 													<div class="form-group">
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
@@ -154,5 +154,5 @@
 	</body>
 	</html>
 <?php }else{
-	header("Location: form_login.php");
+	header("Location: index.php");
 }?>

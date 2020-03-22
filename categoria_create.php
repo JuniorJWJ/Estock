@@ -20,14 +20,14 @@
 			$result_processo = "INSERT INTO log (processo) VALUES ('$processo')";	
 			$resultado_processos = mysqli_query($conn, $result_processo);
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>
 				<script type=\"text/javascript\">
 					alert(\"Categoria Cadastrada com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>
 				<script type=\"text/javascript\">
 					alert(\"Categoria não foi cadastrada com Sucesso.\");
 				</script>

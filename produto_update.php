@@ -44,14 +44,14 @@
 	<body> <?php
 		if(mysqli_affected_rows($conn) != 0){
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>
 				<script type=\"text/javascript\">
 					alert(\"Produto alterado com Sucesso.\");
 				</script>
 			";	
 		}else{
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>
 				<script type=\"text/javascript\">
 					alert(\"Produto não foi alterado com Sucesso.\");
 				</script>

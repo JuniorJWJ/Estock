@@ -22,15 +22,15 @@
 				<h1>Listar Funcionário</h1>
 			</div>
 			<div class="pull-right">
-				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Sair</button></a>
+				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" >Sair</button></a>
 			</div>
 			<div class="pull-left">
-					<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Estoque</button></a>
+					<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" >Estoque</button></a>
 			</div>
 			<?php 	
             if($_SESSION['permissao']=="1"){?>
                 <div class="pull-left">
-					<a href="http://localhost/estock-master/index.php"><button type="button" class="btn btn-xs btn-success" data-toggle="modal" >Produto</button></a>
+					<a href="http://localhost/estock-master/produto.php"><button type="button" class="btn btn-xs btn-success"  >Produto</button></a>
 			    </div>
 				<div class="pull-right">
 					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalCadFunc">Cadastrar Funcionário</button>
@@ -95,10 +95,10 @@
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title text-center" id="myModalLabel">Cadastrar Funcionário</h4>
+													<h4 class="modal-title text-center" id="myModalLabel">Alterar Funcionário</h4>
 												</div>
 												<div class="modal-body">
-													<form method="POST" action="http://localhost/Estock-master/processa_editar_funcionario.php" enctype="multipart/form-data">
+													<form method="POST" action="http://localhost/Estock-master/funcionario_update.php" enctype="multipart/form-data">
 														<div class="form-group">
 															<label for="recipient-name" class="control-label">Nome :</label>   	<!-- NOME DO FUNCIONARIO -->
 															<input 	value="<?php echo $rows_funcionario['nome']; ?>" name="nome" type="text" class="form-control">
@@ -155,10 +155,10 @@
 												</div>
 												<div class="modal-body">
 													<p>Tem certeza que deseja apagar o <?php echo "  ".$rows_funcionario['nome']; ?> ?</p>
-													<form method="POST" action="http://localhost/estock1/proc_apagar_funcionario.php" enctype="multipart/form-data">
+													<form method="POST" action="http://localhost/estock1/funcionario_delete.php" enctype="multipart/form-data">
 															<input name="id" type="hidden" class="form-control" id="id-curso" value="">
 															<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-															<a href="<?php echo "proc_apagar_funcionario.php?id=".$rows_funcionario['id'] ."";?>"><button type="button" class="btn btn-danger" >Apagar</button></a>
+															<a href="<?php echo "funcionario_delete.php?id=".$rows_funcionario['id'] ."";?>"><button type="button" class="btn btn-danger" >Apagar</button></a>
 													</form>
 												</div>
 											</div>
@@ -203,5 +203,5 @@
 	</body>
 	</html>
 	<?php }else{
-		header("Location: form_login.php");
+		header("Location: index.php");
 	}?>
