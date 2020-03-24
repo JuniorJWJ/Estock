@@ -18,6 +18,7 @@
 			<title>Modal</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
 			
+			
 		</head>
 		<body>
 		<div class="container theme-showcase" role="main">
@@ -50,7 +51,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<table class="table">
+						<table class="table table-borderless table-dark">
 							<thead>
 								<tr>
 									<th>#</th>
