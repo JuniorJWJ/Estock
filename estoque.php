@@ -11,7 +11,7 @@
 			<meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>Modal</title>
+			<title>Estoque</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
 			<link href="css/style.css" rel="stylesheet">			
 			<style>
@@ -23,12 +23,13 @@
 
 				/* Style the links inside the navigation bar */
 				.topnav a {
-				float: left;
+				float: right;
 				color: #f2f2f2;
 				text-align: center;
 				padding: 14px 16px;
 				text-decoration: none;
 				font-size: 17px;
+				
 				}
 
 				/* Change the color of links on hover */
@@ -44,48 +45,45 @@
 				}
 
 				.topnav input[type=text] {
-				float: right;
+				float: left;
 				padding: 6px;
 				margin-top: 8px;
+				/* margin-left: 110px; */
 				margin-right: 16px;
 				border: none;
 				font-size: 17px;
 				}
 				.topnav button[type=submit] {
-				float: right;
+				float: left;
 				padding: 6px;
 				margin-top: 8px;
 				margin-right: 16px;
 				border: none;
 				font-size: 17px;
 				}
+				.topnav img {
+				float: left;
+				width: 40px;
+				margin-left: 110px;
+				height: 40px;
+				margin-top: 8px;
+				margin-right: 16px;
+				border: none;
+				}
+				h1{
+					font-size: 25px;
+					margin-left: 20px;
+				}
 			</style>
 		</head>
 		<body>
-			<div class="topnav">
-				<a class="active" href="#home">Home</a>
-				<a href="#about">About</a>
-				<a href="#contact">Contact</a>
-				<button type="submit" class="btn btn-default">Submit</button>
-				<input type="text" placeholder="Search..">
-				
-			</div>
+			<?php include_once("header.php")?>
 			<div class="container theme-showcase" role="main">
 				<div class="page-header">
 					<h1>Estoque</h1>
 				</div>
-				
-				<div class="pull-right">
-					<a href="http://localhost/estock-master/produto.php"><button type="button" class="btn btn-xs btn-success" >Produto</button></a>
-				</div>
-				<div class="pull-right">
-					<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" >Funcionário</button></a>
-				</div>
-				<div class="pull-right">
-					<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" >Sair</button></a>
-				</div>
 				<div class="container theme-showcase" role="main">
-					<div class="row">
+					<!-- <div class="row"> -->
 						<div class="col-md-12">
 							<table class="table">
 								<thead>
@@ -119,7 +117,7 @@
 									<?php } ?>
 								</tbody>
 							</table>
-					</div>
+					<!-- </div> -->
 				</div>		
 			</div>
 			<!-- ESGOTADOS  ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS-->
@@ -128,22 +126,23 @@
 				$resultado_cursos = mysqli_query($conn, $result_cursos);
 			?>
 			<div class="container theme-showcase" role="main">
-			<?php
+				<?php
 				$result_cursos_1 = "SELECT * FROM `produto` WHERE quantidade = 0";
 				$resultado_cursos_1 = mysqli_query($conn, $result_cursos_1);
 
 				if($rows_produto = mysqli_fetch_assoc($resultado_cursos_1)){?>
 					<div class="page-header">
-						<h1>Esgotados : </h1>
+						<h1>Esgotados  </h1>
 					</div>
 					<div class="container theme-showcase" role="main">
-						<div class="row">
+						<!-- <div class="row"> -->
 							<div class="col-md-12">
 								<table class="table">
 									<thead>
 										<tr>
 											<th>#</th>
 											<th>Nome do Produto</th>
+											<th>Foto</th>
 											<th>Código de Barras</th>
 											<th>Quantidade/Ação</th>
 										</tr>
@@ -155,6 +154,7 @@
 												<tr>
 													<td><?php echo $rows_produto['id']; ?></td>
 													<td><?php echo $rows_produto['nome']; ?></td>
+													<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 													<td><?php echo $rows_produto['codigo_barras']; ?></td>
 													<td>
 													<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
@@ -167,44 +167,22 @@
 												</tr>  
 											<?php } ?>
 										<?php } ?>
-								</tbody>
+										</tbody>
 								</table>
 							</div>
+						<!-- </div> -->
 					</div>
 				<?php }else{?>
-					<h2> Não há produtos esgotados <h2>
-				<?php } ?>	
+					<h1> Não há produtos esgotados <h1>
+					
+				<?php } ?>
 			</div>
 		<!-- jQuery-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>  
 		<!-- Include plugins -->
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
 		
-			$('#exampleModal').on('show.bs.modal', function (event) {
-			//mask
-			$('#valor').mask('#.##0,00', {reverse: true});
-			$('#valor1').mask('#.##0,00', {reverse: true});
-			
-			})
-			function previewImagem(){
-					var imagem = document.querySelector('input[name=imagem]').files[0];
-					var preview = document.querySelector('img');
-					
-					var reader = new FileReader();
-					
-					reader.onloadend = function () {
-						preview.src = reader.result;
-					}
-					
-					if(imagem){
-						reader.readAsDataURL(imagem);
-					}else{
-						preview.src = "";
-					}
-				}
-		</script>
 	</body>
 	</html>
 <?php }else{
