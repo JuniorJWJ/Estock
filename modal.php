@@ -149,7 +149,7 @@
     </div>
     <!-- FIM MODAL CADASTRO FUNCIONARIO -->
 <?php }else{
-	header("Location: form_login.php");
+	header("Location: index.php");
 }?>
 
 

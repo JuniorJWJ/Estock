@@ -17,39 +17,36 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Modal</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
-			
+			<link rel="stylesheet" type="text/css" href="css/style.css">			
+
 			
 		</head>
 		<body>
+		<?php include_once("header_produto.php")?>
 		<div class="container theme-showcase" role="main">
-			<div class="page-header">
+			<div class="page-header">				
+				<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right" >Gerar relatório</button></a>
+				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
+				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
 				<h1>Listar Produtos</h1>
 			</div>
-			<div class="pull-right">
-				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" >Sair</button></a>
-			</div>
-			<div class="pull-left">
-					<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" >Estoque</button></a>
-			</div>
+			
 			<?php 	
-			if($_SESSION['permissao']=="1"){?>
-				<div class="pull-left">
-					<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="btn btn-xs btn-success" >Gerar relatório</button></a>
-				</div>
-				<div class="pull-left">
-						<a href="http://localhost/estock-master/funcionario.php"><button type="button" class="btn btn-xs btn-success" >Funcionário</button></a>
-				</div>
-				<div class="pull-right">
+			// if($_SESSION['permissao']=="1"){?>
+				<!-- <div class="pull-right">
+					<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo" >Gerar relatório</button></a>
+				</div> -->
+				<!-- <div class="pull-right">
 					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
-				</div>
-				<div class="pull-right">
+				</div> -->
+				<!-- <div class="pull-right">
 					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
-				</div>
-			<?php } ?>
+				</div> -->
+			<?php //} ?>
 			<div class="container theme-showcase" role="main">
-				<div class="page-header">
-				</div>
-				<div class="row">
+				<!-- <div class="page-header"> -->
+				<!-- </div> -->
+				<!-- <div class="row"> -->
 					<div class="col-md-12">
 						<table class="table table-borderless table-dark">
 							<thead>
@@ -167,7 +164,7 @@
 							</tbody>
 						</table>
 					</div>
-				</div>		
+				<!-- </div>		 -->
 			</div>
 			
 		<!-- jQuery-->
@@ -201,5 +198,5 @@
 	</body>
 	</html>
 <?php }else{
-	header("Location: form_login.php");
+	header("Location: index.php");
 }?>

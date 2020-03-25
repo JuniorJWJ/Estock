@@ -1,7 +1,6 @@
 <?php
  	session_start();
 	include_once("conexao.php");
-	include('index.php');
 	
 	$nome = mysqli_real_escape_string($conn, $_POST['nome']);
 	$cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
@@ -29,7 +28,7 @@
         } 
 
 	$result_funcionarios = "INSERT INTO usuario (nome, cpf, email, senha, Foto, fk_cargo) 
-						            VALUES ('$nome', '$cpf', '$email', '$senha', '$novo_nome', '$cargo')";	
+						    VALUES ('$nome', '$cpf', '$email', '$senha', '$novo_nome', '$cargo')";	
 	$resultado_funcionarios = mysqli_query($conn, $result_funcionarios);	
 ?>
 
@@ -43,13 +42,13 @@
 		if(mysqli_affected_rows($conn) != 0){
 			$processo = $_SESSION['usuarioNome']." cadastrou um novo funcionário no sistema (".$nome.")  ";
 			$result_processo = "INSERT INTO log (processo, horario) VALUES ('$processo', NOW())";	
-            $resultado_processos = mysqli_query($conn, $result_processo);
+			$resultado_processos = mysqli_query($conn, $result_processo);
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>
 				<script type=\"text/javascript\">
 					alert(\"Funcionário Cadastrado com Sucesso.\");
 				</script>
 			";	
+			header("Location: funcionario.php");
 		}else{
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/funcionario.php'>

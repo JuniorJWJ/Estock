@@ -1,7 +1,5 @@
 <?php
- 	session_start();
 	include_once("conexao.php");
-	include('index.php');
 	
 	$nome = mysqli_real_escape_string($conn, $_POST['nome']);
 	$detalhes = mysqli_real_escape_string($conn, $_POST['detalhes']);
@@ -38,7 +36,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"> 
 	<head>
 		<meta charset="utf-8">
 	</head>
@@ -49,11 +47,11 @@
 			$result_processo = "INSERT INTO log (processo, horario) VALUES ('$processo', NOW())";	
 			$resultado_processos = mysqli_query($conn, $result_processo);
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>
 				<script type=\"text/javascript\">
 					alert(\"Produto Cadastrado com Sucesso.\");
 				</script>
 			";	
+			header("Location: produto.php");
 		}else{
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Estock-master/produto.php'>

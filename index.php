@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include_once("conexao.php");
 	$_SESSION['log'] = "deslogado";
 ?>

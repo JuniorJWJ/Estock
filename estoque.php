@@ -13,73 +13,13 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Estoque</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
-			<link href="css/style.css" rel="stylesheet">			
-			<style>
-				/* Add a black background color to the top navigation */
-				.topnav {
-				background-color: #333;
-				overflow: hidden;
-				}
-
-				/* Style the links inside the navigation bar */
-				.topnav a {
-				float: right;
-				color: #f2f2f2;
-				text-align: center;
-				padding: 14px 16px;
-				text-decoration: none;
-				font-size: 17px;
+		  <link rel="stylesheet" type="text/css" href="css/style.css">			
 				
-				}
-
-				/* Change the color of links on hover */
-				.topnav a:hover {
-				background-color: #ddd;
-				color: black;
-				}
-
-				/* Add a color to the active/current link */
-				.topnav a.active {
-				background-color: #4CAF50;
-				color: white;
-				}
-
-				.topnav input[type=text] {
-				float: left;
-				padding: 6px;
-				margin-top: 8px;
-				/* margin-left: 110px; */
-				margin-right: 16px;
-				border: none;
-				font-size: 17px;
-				}
-				.topnav button[type=submit] {
-				float: left;
-				padding: 6px;
-				margin-top: 8px;
-				margin-right: 16px;
-				border: none;
-				font-size: 17px;
-				}
-				.topnav img {
-				float: left;
-				width: 40px;
-				margin-left: 110px;
-				height: 40px;
-				margin-top: 8px;
-				margin-right: 16px;
-				border: none;
-				}
-				h1{
-					font-size: 25px;
-					margin-left: 20px;
-				}
-			</style>
 		</head>
 		<body>
-			<?php include_once("header.php")?>
+			<?php include_once("header_estoque.php")?>
 			<div class="container theme-showcase" role="main">
-				<div class="page-header">
+				<div class="page-header"> 
 					<h1>Estoque</h1>
 				</div>
 				<div class="container theme-showcase" role="main">
