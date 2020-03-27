@@ -13,7 +13,12 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Estoque</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
-		  <link rel="stylesheet" type="text/css" href="css/style.css">			
+		   	<link rel="stylesheet" type="text/css" href="css/style.css">		
+			<script type="text/javascript" src="js/script.js"></script>	
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
 				
 		</head>
 		<body>
@@ -48,8 +53,12 @@
 												<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
 													<div class="form-group">
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-														<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
-														<input type="submit" value ="Alterar quantidade"></td>
+														<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
+														<span class="input-number-decrement">–</span>
+														<input class="input-number" type="text" value="1" min="0" max="10">
+														<span class="input-number-increment">+</span>
+														<!-- <input type="submit" value ="Alterar quantidade"></td> -->
+														<button type="submit"><i class="fa fa-save"></i></button>
 													</div>
 												</form>
 											</tr>   
@@ -101,7 +110,7 @@
 														<div class="form-group">
 															<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 															<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
-															<input type="submit" value ="Alterar quantidade"></td>
+															<input type="submit" value ="Alterar quantidade" id="iconsave"></td>
 														</div>
 													</form>
 												</tr>  
