@@ -28,6 +28,9 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `cargo`
 --
 
+CREATE DATABASE estock;
+USE estock;
+
 CREATE TABLE `cargo` (
   `id` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL
