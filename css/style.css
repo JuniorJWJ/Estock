@@ -103,13 +103,14 @@ h1{
   border-radius: 0 4px 4px 0;
 }
 
-.iconsave{
-  height: 40px;
-}
-
 .fa{
   padding:10px;
 }
+
+#btn-save {
+  height: 40px;
+}
+
 /* ESTOQUE */
 .quadrinhoarredondadoexemplo {
   color: white;

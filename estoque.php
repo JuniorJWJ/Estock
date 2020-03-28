@@ -58,7 +58,7 @@
 														<input class="input-number" type="text" value="1" min="0" max="10">
 														<span class="input-number-increment">+</span>
 														<!-- <input type="submit" value ="Alterar quantidade"></td> -->
-														<button type="submit"><i class="fa fa-save"></i></button>
+														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
 													</div>
 												</form>
 											</tr>   
@@ -106,13 +106,14 @@
 													<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 													<td><?php echo $rows_produto['codigo_barras']; ?></td>
 													<td>
-													<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
-														<div class="form-group">
-															<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-															<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
-															<input type="submit" value ="Alterar quantidade" id="iconsave"></td>
-														</div>
-													</form>
+														<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
+															<div class="form-group">
+																<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
+																<input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade">
+																<input type="submit" value ="Alterar quantidade" id="iconsave">
+															</div>
+														</form>
+													</td>
 												</tr>  
 											<?php } ?>
 										<?php } ?>
