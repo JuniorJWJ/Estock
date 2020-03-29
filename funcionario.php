@@ -14,31 +14,23 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Modal</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="css/style.css">
 			
 		</head>
 		<body>
+		<?php include_once("header_funcionario.php")?>
 		<div class="container theme-showcase" role="main">
-			<div class="page-header">
-				<h1>Listar Funcionário</h1>
+			<div class="page-header">				
+				<?php 	
+				if($_SESSION['permissao']=="1"){?>
+					<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right" >Gerar relatório</button></a>
+					<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalCadFunc">Cadastrar Funcionário</button>
+					<h1>Listar Funcionário</h1>
+				<?php } ?>
 			</div>
-			<div class="pull-right">
-				<a href="http://localhost/estock-master/sair.php"><button type="button" class="btn btn-xs btn-success" >Sair</button></a>
-			</div>
-			<div class="pull-left">
-					<a href="http://localhost/estock-master/Estoque.php"><button type="button" class="btn btn-xs btn-success" >Estoque</button></a>
-			</div>
-			<?php 	
-            if($_SESSION['permissao']=="1"){?>
-                <div class="pull-left">
-					<a href="http://localhost/estock-master/produto.php"><button type="button" class="btn btn-xs btn-success"  >Produto</button></a>
-			    </div>
-				<div class="pull-right">
-					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModalCadFunc">Cadastrar Funcionário</button>
-				</div>
-			<?php } ?>
+			
 			<div class="container theme-showcase" role="main">
-				<div class="page-header">
-				</div>
+				
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table">
