@@ -7,6 +7,6 @@
 	<img src="images/Logo.png">
 									
 	<input type="text" placeholder="Pesquisar produto">
-	<button type="submit" class="btn btn-default">&#128233;</button>
+	<button type="submit" class="btn btn-default">🔍</button>
 	
 </div>
