@@ -25,11 +25,12 @@
 		<body>
 		<?php include_once("header_produto.php")?>
 		<div class="container theme-showcase" role="main">
-			<div class="page-header">				
+			<div class="page-header">		
 				<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right" >Gerar relatório</button></a>
 				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
 				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>
-				<h1>Listar Produtos</h1>
+				<a href="http://localhost/estock-master/produto.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right">Exibir produtos</button></a>
+				<h1>Exibindo resultados de "<?php echo "$nome";?>" </h1>
 			</div>
 			
 			
