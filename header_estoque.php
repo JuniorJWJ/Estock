@@ -6,7 +6,9 @@
 	</div>
 	<img src="images/Logo.png">
 									
-	<input type="text" placeholder="Pesquisar produto">
-	<button type="submit" class="btn btn-default">🔍</button>
+	<form method="POST" action="http://localhost/estock-master/estoque_search.php">
+		<input type="text" name="nomeproduto" placeholder="Pesquisar no estoque">
+		<button type="submit" name="SendPesqUser" class="btn btn-default">🔍</button>
+	</form>
 	
 </div>

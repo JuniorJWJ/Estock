@@ -7,7 +7,7 @@
 	<img src="images/Logo.png">
 									
 	<form method="POST" action="http://localhost/estock-master/funcionario_search.php">
-		<input type="text" name="nomeproduto" placeholder="Pesquisar produto">
+		<input type="text" name="nomeproduto" placeholder="Pesquisar funcionário">
 		<button type="submit" name="SendPesqUser" class="btn btn-default">🔍</button>
 	</form>
 	
