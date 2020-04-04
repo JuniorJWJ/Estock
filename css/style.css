@@ -62,53 +62,31 @@ h1{
 
 .input-number {
   width: 80px;
-  padding: 0 12px;
+  height: 40px;
+  padding: 0 30px;
   vertical-align: top;
   text-align: center;
   outline: none;
 }
 
-.input-number,
-.input-number-decrement,
-.input-number-increment {
+.input-number{
   border: 1px solid #ccc;
   height: 40px;
   user-select: none;
 }
 
-.input-number-decrement,
-.input-number-increment {
-  display: inline-block;
-  width: 30px;
-  line-height: 38px;
-  background: #f1f1f1;
-  color: #444;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.input-number-decrement:active,
-.input-number-increment:active {
-  background: #ddd;
-}
 
-.input-number-decrement {
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-}
-
-.input-number-increment {
-  border-left: none;
-  border-radius: 0 4px 4px 0;
-}
 
 .fa{
-  padding:10px;
+  /* padding:10px; */
+   display: inline-block; 
 }
 
 #btn-save {
-  height: 40px;
+  /* height: 40px; */
+  height: 25px;
+  Vertical-align: top;
 }
 
 /* ESTOQUE */

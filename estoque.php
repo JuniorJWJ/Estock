@@ -48,17 +48,16 @@
 											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 											<td><?php echo $rows_produto['codigo_barras']; ?></td>
 											<td>
-												<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
+												
 													<div class="form-group">
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
-														<span class="input-number-decrement">–</span>
-														<input class="input-number" name="quantidade" type="text" value="<?php echo $rows_produto['quantidade']; ?>" min="0">
-														<span class="input-number-increment">+</span>
+														<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
+															value="<?php echo $rows_produto['quantidade']; ?>"   min="0" max="200" step="0"  maxlength="3">
 														<!-- <input type="submit" value ="Alterar quantidade"></td> -->
 														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
 													</div>
-												</form>
+												
 											</td>
 										</tr>   
 									<?php } ?>
@@ -99,17 +98,14 @@
 											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 											<td><?php echo $rows_produto['codigo_barras']; ?></td>
 											<td>
-												<form method="POST" action="http://localhost/estock-master/estoque_update.php" enctype="multipart/form-data">
+												
 													<div class="form-group">
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
-														<span class="input-number-decrement">–</span>
-														<input class="input-number" name="quantidade" type="text" value="<?php echo $rows_produto['quantidade']; ?>" min="0">
-														<span class="input-number-increment">+</span>
-														<!-- <input type="submit" value ="Alterar quantidade"></td> -->
-														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
+														<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
+															   value="<?php echo $rows_produto['quantidade']; ?>" min="0" max="200" step="0"  maxlength="3">														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
 													</div>
-												</form>
+												
 											</td>
 										</tr>   
 									<?php } ?>
@@ -119,59 +115,24 @@
 					</div>		
 				</div>
 			</div>
-			
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>  
-		<!-- Include plugins -->
-		<script src="js/bootstrap.min.js"></script>
-			<script type="text/javascript">
-				(function() {					
-					window.inputNumber = function(el) {
-						var min = el.attr('min') || false;
-						var max = el.attr('max') || false;
+	
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>			
+		<script src="js/bootstrap.min.js"></script>	
+		<script>
+			$(() =>{
+				$("input[name='quantidade_estoque']").on('change', e =>{
+					const campo = e.target;
+					const id_produto = campo.getAttribute("product-id");
+					const qte_digitada = campo.value;
 
-						var els = {};
-
-						els.dec = el.prev();
-						els.inc = el.next();
-
-						el.each(function() {
-						init($(this));
-						});
-
-						function init(el) {
-
-						els.dec.on('click', decrement);
-						els.inc.on('click', increment);
-
-						function decrement() {
-							var value = el[0].value;
-							value--;
-							if(!min || value >= min) {
-							el[0].value = value;
-							}
-						}
-
-						function increment() {
-							var value = el[0].value;
-							value++;
-							if(!max || value <= max) {
-							el[0].value = value++;
-							}
-						}
-						}
-					}
-					})();
-
-					inputNumber($('.input-number'));
-			</script>	
-
-		<!-- jQuery-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>  
-		<!-- Include plugins -->
-		<script src="js/bootstrap.min.js"></script>
-		
+					var requisicao = $.ajax("/estock-master/estoque_altera.php", {type: "POST", data: {id: id_produto, quantidade: qte_digitada}});
+					// requisicao.done(function(mensagem){
+					// 	alert(mensagem);
+					// });
+					// alert("iD é " + id_produto + ", Qte é " + qte_digitada);	
+				});
+			});
+		</script>
 	</body>
 	</html>
 <?php }else{
