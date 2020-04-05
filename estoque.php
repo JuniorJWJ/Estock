@@ -53,7 +53,7 @@
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
 														<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
-															value="<?php echo $rows_produto['quantidade']; ?>"   min="0" max="200" step="0"  maxlength="3">
+															value="<?php echo $rows_produto['quantidade']; ?>"   min="0" >
 														<!-- <input type="submit" value ="Alterar quantidade"></td> -->
 														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
 													</div>
@@ -74,7 +74,7 @@
 			?>
 			<div class="container theme-showcase" role="main">
 				<div class="page-header"> 
-					<h1>Estoque</h1>
+					<h1>Esgotados</h1>
 				</div>
 				<div class="container theme-showcase" role="main">
 					<div class="col-md-12">
@@ -103,7 +103,7 @@
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
 														<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
-															   value="<?php echo $rows_produto['quantidade']; ?>" min="0" max="200" step="0"  maxlength="3">														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
+															   value="<?php echo $rows_produto['quantidade']; ?>" min="0">														<button type="submit" id="btn-save"><i class="fa fa-save"></i></button>
 													</div>
 												
 											</td>
@@ -126,9 +126,9 @@
 					const qte_digitada = campo.value;
 
 					var requisicao = $.ajax("/estock-master/estoque_altera.php", {type: "POST", data: {id: id_produto, quantidade: qte_digitada}});
-					// requisicao.done(function(mensagem){
-					// 	alert(mensagem);
-					// });
+					requisicao.done(function(mensagem){
+						location.reload();
+					});
 					// alert("iD é " + id_produto + ", Qte é " + qte_digitada);	
 				});
 			});
