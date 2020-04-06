@@ -23,43 +23,8 @@
 		<body>
 			<?php include_once("header_estoque.php")?>
 			<div class="container theme-showcase" role="main">
-				<div class="page-header"> 
-					<h1>Estoque</h1>
-				</div>
-				<div class="container theme-showcase" role="main">
-					<div class="col-md-12">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Nome do Produto</th>
-									<th>Foto</th>
-									<th>Código de Barras</th>
-									<th>Quantidade/Ação</th>
-								</tr>
-							</thead>
-							<tbody>                         <!-- EXIBIR ESTOQUE-->
-								<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
-									<?php $quantidade = $rows_produto['quantidade'] ?>
-									<?php if($quantidade>0){ ?>
-										<tr>
-											<td><?php echo $rows_produto['id']; ?></td>
-											<td><?php echo $rows_produto['nome']; ?></td>
-											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
-											<td><?php echo $rows_produto['codigo_barras']; ?></td>
-											<td>
-												<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
-													<!-- <input type="number" id="quantity" min="0" value="<?php echo $rows_produto['quantidade']; ?>" name="quantidade"> -->
-												<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
-													value="<?php echo $rows_produto['quantidade']; ?>"   min="0" >
-											</td>
-										</tr>   
-									<?php } ?>
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>		
-				</div>
+				
+				
 			</div>
 			<!-- ESGOTADOS  ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS ESGOTADOS-->
 			<?php	
@@ -67,11 +32,9 @@
 				$resultado_cursos = mysqli_query($conn, $result_cursos);
 			?>
 			<div class="container theme-showcase" role="main">
-				<div class="page-header"> 
-					<h1>Esgotados</h1>
-				</div>
+				
 				<div class="container theme-showcase" role="main">
-					<div class="col-md-12">
+					
 						<table class="table">
 							<thead>
 								<tr>
@@ -91,21 +54,18 @@
 											<td><?php echo $rows_produto['nome']; ?></td>
 											<td><img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 20px; height: 20px;"><br><br></td>
 											<td><?php echo $rows_produto['codigo_barras']; ?></td>
-											<td>
-												
+											<td>											
 													<div class="form-group">
 														<input type="hidden" id="id11123" name="id" value="<?php echo $rows_produto['id']; ?>">
 														<input type="number" pattern="[0-9]*" id="spinner" name="quantidade_estoque" product-id="<?php echo $rows_produto['id']; ?>" 
 															   value="<?php echo $rows_produto['quantidade']; ?>" min="0">														
-													</div>
-												
+													</div>												
 											</td>
 										</tr>   
 									<?php } ?>
 								<?php } ?>
 							</tbody>
 						</table>
-					</div>		
 				</div>
 			</div>
 	
