@@ -10,7 +10,7 @@
 	$imagem = $_POST['imagem'];
 	echo "$id - $nome - $detalhes";
     
-
+	
 		$formatosPermitidos = array("png","jpeg", "jpg");
 			$extensao = pathinfo($_FILES['imagem']['name'],PATHINFO_EXTENSION );
 		
@@ -30,10 +30,15 @@
 			} 
 	
 
-
-    $result_produtos = "UPDATE produto SET nome = '$nome', detalhe = '$detalhes', valor = '$valor', codigo_barras = '$codigo_barras',Foto = '$novo_nome' 
+	if(empty($nome_foto)){
+		$result_produtos = "UPDATE produto SET nome = '$nome', detalhe = '$detalhes', valor = '$valor', codigo_barras = '$codigo_barras' 
 	 WHERE id = '$id'";
     $resultado_produtos = mysqli_query($conn, $result_produtos);
+	}else{
+     	$result_produtos = "UPDATE produto SET nome = '$nome', detalhe = '$detalhes', valor = '$valor', codigo_barras = '$codigo_barras',Foto = '$novo_nome' 
+	 	 WHERE id = '$id'";
+		 $resultado_produtos = mysqli_query($conn, $result_produtos);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

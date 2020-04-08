@@ -28,10 +28,17 @@
             echo"formato inválido";
         } 
 	
+	if(empty($nome_foto)){
+		$result_produtos = "UPDATE usuario SET nome = '$nome', cpf = '$cpf', email = '$email', senha = '$senha' 
+		WHERE id = '$id'";
+    	$resultado_produtos = mysqli_query($conn, $result_produtos);
+	}else{
+		$result_produtos = "UPDATE usuario SET nome = '$nome', cpf = '$cpf', email = '$email', senha = '$senha', foto = '$novo_nome' 
+		WHERE id = '$id'";
+    	$resultado_produtos = mysqli_query($conn, $result_produtos);
+	}
 
-    $result_produtos = "UPDATE usuario SET nome = '$nome', cpf = '$cpf', email = '$email', senha = '$senha', foto = '$novo_nome' 
-	 WHERE id = '$id'";
-    $resultado_produtos = mysqli_query($conn, $result_produtos);
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
