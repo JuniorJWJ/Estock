@@ -1,6 +1,6 @@
 /* NAVBAR */
 .topnav {
-  background-color: #333;
+  background-color: #1B7F79;
   overflow: hidden;
 }
 
@@ -92,7 +92,7 @@ h1{
 /* ESTOQUE */
 .quadrinhoarredondadoexemplo {
   color: white;
-  background: #333;
+  background: #1B7F79;
   border: 1px ;
   margin-left: 10px; 
   margin-bottom: 0px;
@@ -101,3 +101,32 @@ h1{
   display: block;
   border-radius: 4px;
 }
+
+/* TABELA */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #1B7F79;
+  color: white;
+}
+.buttonacao {
+  width: 80px;
+  font-size: 13px;
+  color: white;
+  background: #1B7F79;
+  border: 1px ;
+  padding: 5px;
+  text-align: center;
+  border-radius: 4px;
+}
+.cabecalho {text-align: center}

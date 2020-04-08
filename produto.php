@@ -48,12 +48,12 @@
 				<!-- </div> -->
 				<!-- <div class="row"> -->
 					<div class="col-md-12">
-						<table class="table table-borderless table-dark">
+						<table>
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Nome do Produto</th>
-									<th>Ação</th>
+									<th width="10%">#</th>
+									<th width="60%">Nome do Produto</th>
+									<th class="cabecalho" width="30%">Ação</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -62,10 +62,10 @@
 										<td><?php echo $rows_produto['id']; ?></td>
 										<td><?php echo $rows_produto['nome']; ?></td>
 										<td>
-											<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
+											<button type="button" class="buttonacao" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
 											<?php if($_SESSION['permissao']=="1"){?>
-											<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" >Editar</button>
-											<button type="button" class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
+											<button type="button" class="buttonacao" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" >Editar</button>
+											<button type="button" class="buttonacao"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
 											<?php } ?>	
 										</td>
 									</tr>
