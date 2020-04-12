@@ -1,7 +1,6 @@
 <?php
  	session_start();
 	include_once("conexao.php");
-	include("modal.php");
 	$result_cursos = "SELECT * FROM produto";
 	$resultado_cursos = mysqli_query($conn, $result_cursos);
 
@@ -22,7 +21,11 @@
 			
 		</head>
 		<body>
-		<?php include_once("header_produto.php")?>
+		<?php
+			include_once("header_produto.php");
+			include_once("modal/modal.php");
+		?>
+		
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">				
 				<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right" >Gerar relatório</button></a>
@@ -44,127 +47,49 @@
 				</div> -->
 			<?php //} ?>
 			<div class="container theme-showcase" role="main">
-				<!-- <div class="page-header"> -->
-				<!-- </div> -->
-				<!-- <div class="row"> -->
-					<div class="col-md-12">
-						<table>
-							<thead>
+				<div class="col-md-12">
+					<table>
+						<thead>
+							<tr>
+								<th width="10%">#</th>
+								<th width="60%">Nome do Produto</th>
+								<th class="cabecalho" width="30%">Ação</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
 								<tr>
-									<th width="10%">#</th>
-									<th width="60%">Nome do Produto</th>
-									<th class="cabecalho" width="30%">Ação</th>
+									<td><?php echo $rows_produto['id']; ?></td>
+									<td><?php echo $rows_produto['nome']; ?></td>
+									<td>
+										<button type="button" class="buttonacao" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
+										<?php if($_SESSION['permissao']=="1"){?>
+										<button type="button" class="buttonacao" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" >Editar</button>
+										<button type="button" class="buttonacao"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
+										<?php } ?>	
+									</td>
 								</tr>
-							</thead>
-							<tbody>
-								<?php while($rows_produto = mysqli_fetch_assoc($resultado_cursos)){ ?>
-									<tr>
-										<td><?php echo $rows_produto['id']; ?></td>
-										<td><?php echo $rows_produto['nome']; ?></td>
-										<td>
-											<button type="button" class="buttonacao" data-toggle="modal" data-target="#myModal<?php echo $rows_produto['id']; ?>">Visualizar</button>
-											<?php if($_SESSION['permissao']=="1"){?>
-											<button type="button" class="buttonacao" data-toggle="modal" data-target="#exampleModal<?php echo $rows_produto['id']; ?>" >Editar</button>
-											<button type="button" class="buttonacao"  data-toggle="modal" data-target="#myModalDel<?php echo $rows_produto['id']; ?>" data-whatever="<?php echo $rows_produto['id']; ?>">Apagar</button>
-											<?php } ?>	
-										</td>
-									</tr>
-									<!-- Inicio Modal EXIBIR -->
-									<div class="modal fade" id="myModal<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $rows_produto['nome']; ?></h4>
-												</div>
-												<div class="modal-body">
-													<p><?php echo "ID : ".$rows_produto['id']; ?></p><hr>
-													<p><?php echo "Nome : ".$rows_produto['nome']; ?></p><hr>
-													<p><?php echo "Descrição : ".$rows_produto['detalhe']; ?></p><hr>
-													<p><?php echo "Código de Barras : ".$rows_produto['codigo_barras']; ?></p><hr>
-													<p><?php echo "Preço : ".$rows_produto['valor'	]; ?></p><hr>
-													<p><?php $teste = $rows_produto['fk_categoria']; 
-														$teste1 = "SELECT nome FROM categoria WHERE id='$teste'";
-														$result = mysqli_query($conn, $teste1);
-														$row_categoria1 = mysqli_fetch_assoc($result);
-														echo "Categoria : ".$row_categoria1['nome'];
-													?></p><hr>
-													
+								<!-- INÍCIO MODAL EXIBIR -->
+								<div class="modal fade" id="myModal<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<?php include("modal/modal_produto_exibir.php"); ?>
+								</div>
+								<!-- FIM MODAL EXIBIR -->
 
-													<p><?php //echo "Categoria : ".$rows_produto['fk_categoria']; ?></p>
-													<img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 150px; height: 150px;"><br><br>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- FIM MODAL EXIBIR -->
-									<!-- INICIO MODAL ALTERAR PRODUTO -->
-									<div class="modal fade" id="exampleModal<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title" id="exampleModalLabel">Produto</h4>
-												</div>
-												<div class="modal-body">
-														<form method="POST" action="http://localhost/Estock-master/produto_update.php" enctype="multipart/form-data">
-															<div class="form-group">
-																<label for="recipient-name" class="control-label">Nome:</label>
-																<input value="<?php echo $rows_produto['nome']; ?>" name="nome" type="text" class="form-control" id="recipient-name">
-															</div>
+								<!-- INICIO MODAL ALTERAR PRODUTO -->
+								<div class="modal fade" id="exampleModal<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+									<?php include("modal/modal_produto_alterar.php"); ?>
+								</div>
+								<!-- FIM MODAL ALTERAR PRODUTO  -->
 
-															<div class="form-group">
-																<label for="detalhes" class="control-label">Detalhes:</label>
-																<textarea v name="detalhes" class="form-control" id="detalhes"><?php echo $rows_produto['detalhe']; ?></textarea>
-															</div>
-
-															<div class="form-group">
-																<label for="codigo_barras" class="control-label">Código de Barras :</label>
-																<input value="<?php echo $rows_produto['codigo_barras']; ?>" name="codigo_barras" type="text" class="form-control" id="codigo_barras">
-															</div>
-
-															<div class="form-group">
-																<label for="valor" class="control-label">Valor :</label>   			<!-- VALOR -->
-																<input value="<?php echo $rows_produto['valor']; ?>" name="valor" type="text" class="form-control" id="valor">
-															</div>
-															<input type="file" name="imagem" id="imagem" onchange="previewImagem()"><br><br>
-															<img src="<?php echo "upload/".$rows_produto['Foto'] ?>" style="width: 150px; height: 150px;"><br><br>							<!-- FOTO -->
-															<input name="id" type="hidden" class="form-control" id="id-curso" value="<?php echo $rows_produto['id']; ?>">
-															
-															<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-															<button type="submit" class="btn btn-danger">Alterar</button>
-														</form>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- FIM MODAL ALTERAR PRODUTO  -->
-
-									<!-- MODAL APAGAR PRODUTO -->
-									<div class="modal fade" id="myModalDel<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $rows_produto['nome']; ?></h4>
-												</div>
-												<div class="modal-body">
-													<p>Tem certeza que deseja apagar o <?php echo "  ".$rows_produto['nome']; ?> ?</p>
-													<form method="POST" action="http://localhost/estock1/produto_delete.php" enctype="multipart/form-data">
-															<input name="id" type="hidden" class="form-control" id="id-curso" value="">
-															<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-															<a href="<?php echo "produto_delete.php?id=".$rows_produto['id'] ."";?>"><button type="button" class="btn btn-danger" >Apagar</button></a>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- FIM MODAL APAGAR PRODUTO-->
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>
-				<!-- </div>		 -->
+								<!-- MODAL APAGAR PRODUTO -->
+								<div class="modal fade" id="myModalDel<?php echo $rows_produto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<?php include("modal/modal_produto_deletar.php"); ?>
+								</div>
+								<!-- FIM MODAL APAGAR PRODUTO-->
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			
 		<!-- jQuery-->
