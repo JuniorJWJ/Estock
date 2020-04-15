@@ -17,7 +17,7 @@
 			<title>Modal</title>
 			<link href="css/bootstrap.min.css" rel="stylesheet">
 			<link rel="stylesheet" type="text/css" href="css/style.css">			
-
+			
 			
 		</head>
 		<body>
@@ -27,7 +27,7 @@
 		?>
 		
 		<div class="container theme-showcase" role="main">
-			<div class="page-header">				
+			<div class="page-header">	
 				<a href="http://localhost/estock-master/arquivo.php"><button type="button" class="quadrinhoarredondadoexemplo pull-right" >Gerar relatório</button></a>
 				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcad">Cadastrar Produto</button>
 				<button type="button" class="quadrinhoarredondadoexemplo pull-right" data-toggle="modal" data-target="#myModalcadCat">Cadastrar Categoria</button>

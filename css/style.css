@@ -130,3 +130,25 @@ th {
   border-radius: 4px;
 }
 .cabecalho {text-align: center}
+ 
+/*Configurações Padrões*/
+ul.menu, .menu li, .menu a{ margin:0; padding:0; list-style:none; text-decoration:none;}
+ul.menu ul{ position:absolute; display:none; box-shadow:3px 3px 2px #1B7F79;}
+ 
+/* Configurações nivel 1*/
+ul.menu{ float:left; font-family:Verdana, Geneva, sans-serif; font-size:15px; border-radius:5px; padding:0 5px;}
+.menu li{ float:left; width:auto; position:relative;}
+.menu li a{ display:block; padding:0 20px; line-height:45px; height:45px; float:left; transition:all 0.1s linear; }
+ 
+/* Configurações nivel 2*/
+.menu li:hover > ul.submenu-1{ display:block; top:45px; left:0; padding:5px; width:200px; border-radius:0 0 5px 5px;   }
+.menu ul.submenu-1 a{  width:160px; padding:0 20px; border-radius:5px;  }
+ 
+
+/*Configurações de cores*/
+ 
+/*nivel 1*/
+.menu{background:#CCC; }
+.menu a{ color:#000;}
+.menu li:hover > a{ background:white;  color:#fff;}
+.menu{z-index: 1111111111px;}
